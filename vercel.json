@@ -1,0 +1,22 @@
+{
+    "builds": [
+        {
+            "use": "@vercel/node",
+            "src": "*.js",
+            "config": {
+                "zeroConfig": true
+            }
+        },
+        {
+            "use": "@vercel/python",
+            "src": "*.py",
+            "config": {
+                "zeroConfig": true
+            }
+        },
+        {
+            "src": "Dockerfile",
+            "use": "@vercel/docker"
+        }
+    ]
+}
