@@ -37,8 +37,3 @@ async def convert_date_main(request: DateRequest):
 
     return {"new_date": timestamp_milliseconds}
 
-
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(app, host="0.0.0.0", port=8000)
