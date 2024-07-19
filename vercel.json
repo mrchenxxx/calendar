@@ -1,21 +1,12 @@
 {
-    "build": {
-        "builder": "@vercel/python",
-        "command": "pip install -r requirements.txt && python setup.py develop",
-        "env": {
-            "PYTHON_VERSION": "3.9"
-        }
+    "builds": {
+        "src": "main.py",
+        "use": "vercel-python"
     },
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/api/entrypoint"
+            "dest": "main.py"
         }
-    ],
-    "functions": {
-        "entrypoint": {
-            "runtime": "python@3.9",
-            "handler": "main.app"
-        }
-    }
+    ]
 }
