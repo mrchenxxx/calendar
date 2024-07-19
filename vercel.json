@@ -1,12 +1,14 @@
 {
-    "builds": [{
-        "src": "main.py",
-        "use": "vercel-python",
-        "config": {
-            "handler": "main:app",
-            "runtime": "python3.9"
+    "version": 2,
+    "builds": [
+        {
+            "src": "main.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb"
+            }
         }
-    }],
+    ],
     "routes": [
         {
             "src": "/(.*)",
