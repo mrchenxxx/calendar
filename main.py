@@ -22,6 +22,9 @@ def lunar_to_solar(lunar_date_str):
     solar = Converter.Lunar2Solar(lunar)
     return datetime(solar.year, solar.month, solar.day)
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
 @app.post("/convert-date")
 async def convert_date_main(request: DateRequest):
@@ -36,4 +39,3 @@ async def convert_date_main(request: DateRequest):
     await asyncio.create_task(main(request.record_id, timestamp_milliseconds))
 
     return {"new_date": timestamp_milliseconds}
-
