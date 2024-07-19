@@ -1,22 +1,21 @@
 {
-    "builds": [
-        {
-            "use": "@vercel/node",
-            "src": "*.js",
-            "config": {
-                "zeroConfig": true
-            }
-        },
-        {
-            "use": "@vercel/python",
-            "src": "*.py",
-            "config": {
-                "zeroConfig": true
-            }
-        },
-        {
-            "src": "Dockerfile",
-            "use": "@vercel/docker"
+    "build": {
+        "builder": "@vercel/python",
+        "command": "pip install -r requirements.txt && python setup.py develop",
+        "env": {
+            "PYTHON_VERSION": "3.9"
         }
-    ]
+    },
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/api/entrypoint"
+        }
+    ],
+    "functions": {
+        "entrypoint": {
+            "runtime": "python@3.9",
+            "handler": "main.app"
+        }
+    }
 }
